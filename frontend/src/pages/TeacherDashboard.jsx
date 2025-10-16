@@ -131,9 +131,9 @@ function DashboardOverview({ user }) {
     const dateStr = new Date().toISOString().split('T')[0];
     try {
       const [attendanceRes, leavesRes, gradesRes] = await Promise.all([
-        axios.get(`http://localhost:5000/api/teacher/attendance?date=${dateStr}`),
-        axios.get('http://localhost:5000/api/teacher/leaves'),
-        axios.get('http://localhost:5000/api/teacher/grades')
+        axios.get(`/api/teacher/attendance?date=${dateStr}`),
+        axios.get('/api/teacher/leaves'),
+        axios.get('/api/teacher/grades')
       ]);
 
       const attendanceData = attendanceRes.data;
@@ -243,7 +243,7 @@ function LeaveRequests({ user }) {
   const fetchLeaveRequests = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/teacher/leaves');
+      const response = await axios.get('/api/teacher/leaves');
       setLeaveRequests(response.data);
     } catch (error) {
       console.error('Error fetching leave requests:', error);
@@ -255,7 +255,7 @@ function LeaveRequests({ user }) {
 
   const handleLeaveAction = async (leaveId, status) => {
     try {
-      await axios.post('http://localhost:5000/api/teacher/handle-leave', {
+      await axios.post('/api/teacher/handle-leave', {
         leaveId,
         status
       });
@@ -312,7 +312,7 @@ function LeaveRequests({ user }) {
                         {leave.document_url && (
                           <p className="mt-2">
                             <a
-                              href={`http://localhost:5000/uploads/${leave.document_url}`}
+                              href={`/uploads/${leave.document_url}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-blue-600 hover:text-blue-800 underline"
@@ -367,7 +367,7 @@ function GradesPerformance({ user }) {
   const fetchGrades = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/teacher/grades');
+      const response = await axios.get('/api/teacher/grades');
       setGrades(response.data);
     } catch (error) {
       console.error('Error fetching grades:', error);
@@ -395,7 +395,7 @@ function GradesPerformance({ user }) {
     formData.append('file', uploadFile);
 
     try {
-      await axios.post('http://localhost:5000/api/teacher/upload-grades', formData, {
+      await axios.post('/api/teacher/upload-grades', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -609,7 +609,7 @@ function LeaveCounter() {
   useEffect(() => {
     const fetchPendingCount = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/teacher/leaves');
+    const response = await axios.get('/api/teacher/leaves');
         const pendingCount = response.data.filter(l => l.status === 'Pending').length;
         setCount(pendingCount);
       } catch (error) {

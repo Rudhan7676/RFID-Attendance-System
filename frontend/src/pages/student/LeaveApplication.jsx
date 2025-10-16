@@ -42,7 +42,7 @@ export default function LeaveApplication() {
         formData.append('document', leaveDocument);
       }
 
-      await axios.post('http://localhost:5000/api/student/apply-leave', formData);
+      await axios.post('/api/student/apply-leave', formData);
 
       setMessage('Leave application submitted successfully!');
       setLeaveForm({ startDate: null, endDate: null, reason: '' });

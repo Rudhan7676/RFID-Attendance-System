@@ -14,7 +14,7 @@ export default function Attendance() {
 
   const fetchAttendance = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/student/attendance/${studentId}`);
+      const response = await axios.get(`/api/student/attendance/${studentId}`);
       setAttendance(response.data.records);
       setAttendancePercentage(response.data.attendancePercentage);
     } catch (error) {

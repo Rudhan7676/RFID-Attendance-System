@@ -34,7 +34,7 @@ const KioskPage = () => {
       // Build a strict URL pointing to backend /images using the filename
       if (response.data?.photoUrl) {
         const filename = String(response.data.photoUrl).split('/').pop().replace(/^\/+/, '');
-        const fullUrl = `http://localhost:5000/images/${filename}`;
+        const fullUrl = `/images/${filename}`;
         setPhotoUrl(fullUrl);
       }
       setRfidUid('');

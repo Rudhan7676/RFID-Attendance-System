@@ -19,7 +19,7 @@ export default function AttendanceTab() {
     try {
       const token = localStorage.getItem('token');
       const dateStr = selectedDate.toISOString().split('T')[0];
-      const res = await axios.get(`http://localhost:5000/api/teacher/attendance?date=${dateStr}`, {
+      const res = await axios.get(`/api/teacher/attendance?date=${dateStr}`, {
         headers: {
           Authorization: token ? `Bearer ${token}` : ''
         }
@@ -38,7 +38,7 @@ export default function AttendanceTab() {
     try {
       const token = localStorage.getItem('token');
       const dateStr = selectedDate.toISOString().split('T')[0];
-      await axios.post('http://localhost:5000/api/teacher/mark-attendance', {
+      await axios.post('/api/teacher/mark-attendance', {
         studentId,
         date: dateStr,
         status

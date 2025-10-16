@@ -14,7 +14,7 @@ export default function Marks() {
 
   const fetchMarks = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/student/marks/${studentId}`);
+      const response = await axios.get(`/api/student/marks/${studentId}`);
       setAnalytics(response.data);
     } catch (error) {
       console.error('Error fetching marks:', error);
