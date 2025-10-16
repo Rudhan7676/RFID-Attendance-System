@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "https://YOUR-BACKEND-HOST/api/$1" },
+    { "source": "/images/(.*)", "destination": "https://YOUR-BACKEND-HOST/images/$1" },
+    { "source": "/uploads/(.*)", "destination": "https://YOUR-BACKEND-HOST/uploads/$1" }
+  ]
+}
+
