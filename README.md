@@ -2,6 +2,30 @@
 
 A complete full-stack attendance management system built with Node.js, Express, SQLite, React, and Tailwind CSS.
 
+## 🚀 Live Demo
+
+**Frontend (Vercel)**: https://rfid-attendance-system-tawny.vercel.app/
+
+**Backend API (Render)**: https://rfid-attendance-system-c1lu.onrender.com/
+
+### Quick Access Links:
+- **🏠 Kiosk/Scan Page**: https://rfid-attendance-system-tawny.vercel.app/
+- **🔐 Login Page**: https://rfid-attendance-system-tawny.vercel.app/login
+
+### Demo Login Credentials:
+**Student Login:**
+- Username: `ST001` (or ST002, ST003, ST004, ST005)
+- Password: `password123`
+- Role: Student
+
+**Teacher Login:**
+- Username: `teacher1`
+- Password: `teacher123`
+- Role: Teacher
+
+**Test RFID UIDs:**
+- `RFID001`, `RFID002`, `RFID003`, `RFID004`, `RFID005`
+
 ## Features
 
 ### Backend (Node.js + Express + SQLite)
@@ -93,18 +117,9 @@ AttendanceProject/
 
 ## Usage
 
-### Demo Credentials
+### Demo Credentials (Same as above)
 
-**Students:**
-- Roll Numbers: ST001, ST002, ST003, ST004, ST005
-- Password: password123
-
-**Teachers:**
-- Usernames: teacher1, teacher2
-- Password: teacher123
-
-**RFID UIDs for Testing:**
-- RFID001, RFID002, RFID003, RFID004, RFID005
+For local development, use the same credentials listed in the Live Demo section.
 
 ### How to Use
 
@@ -196,6 +211,27 @@ AttendanceProject/
    ```
 
 2. The built files will be in `frontend/dist/`
+
+## 🌐 Deployment
+
+This project is deployed using:
+
+- **Frontend**: Vercel (React app)
+- **Backend**: Render (Node.js API)
+
+### Deployment Configuration:
+
+**Vercel Settings:**
+- Root Directory: `frontend`
+- Build Command: `npm run build`
+- Output Directory: `dist`
+
+**Render Settings:**
+- Build Command: `npm install`
+- Start Command: `node server.js`
+- Environment: Node.js
+
+The frontend uses API rewrites to proxy requests to the backend, ensuring seamless communication between services.
 
 ## Troubleshooting
 
