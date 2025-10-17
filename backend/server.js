@@ -356,6 +356,43 @@ app.get('/api/student/marks/:studentId', (req, res) => {
     });
 });
 
+// TEMPORARY: Data import endpoint (remove after use)
+app.post('/api/import-data', (req, res) => {
+    const fs = require('fs');
+    const importFile = path.join(__dirname, 'database_export.sql');
+    
+    if (!fs.existsSync(importFile)) {
+        return res.status(404).json({ message: 'Export file not found' });
+    }
+    
+    const sqlCommands = fs.readFileSync(importFile, 'utf8').split(';\n').filter(cmd => cmd.trim());
+    let completed = 0;
+    let errors = 0;
+    
+    console.log(`Importing ${sqlCommands.length} SQL commands...`);
+    
+    sqlCommands.forEach((sql, index) => {
+        if (sql.trim()) {
+            db.run(sql, (err) => {
+                if (err) {
+                    console.error(`Error executing command ${index + 1}:`, err.message);
+                    errors++;
+                } else {
+                    completed++;
+                }
+                
+                if (completed + errors === sqlCommands.length) {
+                    res.json({ 
+                        message: 'Import completed', 
+                        successful: completed, 
+                        errors: errors 
+                    });
+                }
+            });
+        }
+    });
+});
+
 // 6. Start the Server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
