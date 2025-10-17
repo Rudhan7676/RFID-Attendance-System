@@ -132,7 +132,7 @@ function Overview({ user }) {
     useEffect(() => {
         const fetchSummary = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/student/dashboard-summary/${user.id}`);
+                const res = await axios.get(`/api/student/dashboard-summary/${user.id}`);
                 setSummary(res.data);
             } catch (error) {
                 console.error("Failed to fetch summary", error);
@@ -209,7 +209,7 @@ function Attendance({ user }) {
     useEffect(() => {
         const fetchAttendance = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/student/attendance/${user.id}`);
+                const res = await axios.get(`/api/student/attendance/${user.id}`);
                 setRecords(res.data);
             } catch (error) {
                 console.error("Failed to fetch attendance records", error);
@@ -258,7 +258,7 @@ function Marks({ user }) {
     useEffect(() => {
         const fetchMarks = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/student/marks/${user.id}`);
+                const res = await axios.get(`/api/student/marks/${user.id}`);
                 setMarks(res.data);
             } catch (error) {
                 console.error("Failed to fetch marks", error);
@@ -343,7 +343,7 @@ function LeaveApplication({ user }) {
                 formDataToSend.append('document', formData.document);
             }
 
-            const response = await axios.post('http://localhost:5000/api/student/apply-leave', formDataToSend, {
+            const response = await axios.post('/api/student/apply-leave', formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
